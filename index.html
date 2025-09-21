@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Weather App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">Weather App</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+            <div class="collapse navbar-collapse" id="navbarScroll">
+                <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="">About</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            About me
+          </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="https://my-port-folio-chi-ruddy.vercel.app/" target="_blank">My Portfolio</a>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link activated" aria-disabled="true">User Guide</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <br>
+    <br>
+    <main>
+        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+            <div class="col" id="col1">
+                <div class="card mb-4 rounded-3 shadow-sm">
+                    <div class="card-header py-3">
+                        <h4 class="my-0 fw-normal">Humidity info</h4>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title"><img src="https://cdn-icons-png.flaticon.com/512/4148/4148460.png" alt="" width="80px"></h1>
+                        <ul class="list-unstyled mt-3 mb-4">
+                            <li>Humidity is <span id="humidity"></span></li>
+                            <li>Visibility is <span id="visibility"></span></li>
+                            <li>Pressure is <span id="pressure"></span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col" id="col2">
+                <div class="card mb-4 rounded-3 shadow-sm border-primary">
+                    <div class="card-header py-3 text-bg-primary border-primary">
+                        <h4 class="my-0 fw-normal">Temperature</h4>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title"><img src="pngtree-thermometer-icon-vector--icon-design-png-image_1978811-removebg-preview (1).png" alt="" width="100px"></h1>
+                        <ul class="list-unstyled mt-3 mb-4">
+                            <li>Condition is <span id="condition"></span></li>
+                            <li>Temperature is <span id="temperature"></span></li>
+                            <li>Feels like <span id="feels_like"></span></li>
+                        </ul>
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" /> <br>
+                        <button type="button" class="w-50 btn btn-lg btn-primary">Search</button> </div>
+                </div>
+            </div>
+            <div class="col" id="col3">
+                <div class="card mb-4 rounded-3 shadow-sm">
+                    <div class="card-header py-3 ">
+                        <h4 class="my-0 fw-normal">Wind Info</h4>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title"><img src="99f34281fa02987442e91d318137c98d-removebg-preview.png" alt="" width="100px"></h1>
+                        <ul class="list-unstyled mt-3 mb-4">
+                            <li>Wind Speed is <span id="wind speed"></span></li>
+                            <li>Wind Direction is <span id="wind_dir"></span></li>
+                            <li>Wind Chill is <span id="windchill"></span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script type="module" src="script.js"></script>
+
+    <div id="user-guide-modal" class="modal-overlay">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h5 class="modal-title">User Guide</h5>
+                <button type="button" class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Welcome to the Weather App user guide!</p>
+                <p><strong>1. Search:</strong> To get weather information for a specific city, type the city name into the search bar at the top or in the main temperature section and click "Search."</p>
+                <p><strong>2. Navigation:</strong> The navigation bar has links to the "About" and "About me" pages, as well as this "User Guide."</p>
+                <p><strong>3. Weather Info:</strong> The main page displays humidity, temperature, and wind information in three separate sections.</p>
+            </div>
+        </div>
+    </div>
+    <div id="about-modal" class="modal-overlay">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h5 class="modal-title">About This App</h5>
+                <button type="button" class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>The Weather App is designed to provide real-time weather information, including temperature, humidity, and wind conditions, for any city you search for.</p>
+                <p>It was built using HTML, CSS, and JavaScript, leveraging the WeatherAPI to fetch accurate and up-to-date data.</p>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p id="footer">© 2025 Ansh Arora. Made with ❤️</p>
+    </footer>
+</body>
+
+</html>
