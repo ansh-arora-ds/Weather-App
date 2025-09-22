@@ -98,3 +98,65 @@ window.addEventListener('click', (e) => {
         aboutModal.style.display = 'none';
     }
 });
+// Reveal forecast section when user scrolls near bottom
+window.addEventListener("scroll", () => {
+    const forecastSection = document.getElementById("forecast-section");
+    const triggerPoint = window.innerHeight / 1.2;
+
+    if (forecastSection.getBoundingClientRect().top < triggerPoint) {
+        forecastSection.classList.add("visible");
+    }
+});
+
+// Forecast fetch logic
+document.getElementById("forecast-btn").addEventListener("click", async() => {
+    const city = document.getElementById("forecast-city").value.trim();
+    if (!city) return;
+
+    const response = await fetch(
+        `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${city}&days=5&aqi=no&alerts=no`
+    );
+    const data = await response.json();
+
+    const resultsDiv = document.getElementById("forecast-results");
+    resultsDiv.innerHTML = "";
+
+    if (data.forecast) {
+        data.forecast.forecastday.forEach(day => {
+            resultsDiv.innerHTML += `
+        <div class="col">
+          <div class="card p-3 shadow-sm">
+            <h5>${day.date}</h5>
+            <img src="https:${day.day.condition.icon}" alt="${day.day.condition.text}">
+            <p>${day.day.condition.text}</p>
+            <p>Max: ${day.day.maxtemp_c}°C</p>
+            <p>Min: ${day.day.mintemp_c}°C</p>
+          </div>
+        </div>
+      `;
+        });
+    } else {
+        resultsDiv.innerHTML = `<p class="text-danger">City not found!</p>`;
+    }
+});
+// Change navbar color on scroll
+window.addEventListener("scroll", () => {
+    const navbar = document.querySelector(".navbar");
+
+    if (window.scrollY > 50) {
+        navbar.classList.add("scrolled"); // red background
+    } else {
+        navbar.classList.remove("scrolled"); // back to original
+    }
+});
+// Reveal forecast section with popup effect when user scrolls near it
+window.addEventListener("scroll", () => {
+    const forecastSection = document.getElementById("forecast-section");
+    const triggerPoint = window.innerHeight / 1.2;
+
+    if (forecastSection.getBoundingClientRect().top < triggerPoint) {
+        forecastSection.classList.add("visible");
+    } else {
+        forecastSection.classList.remove("visible");
+    }
+});
