@@ -190,6 +190,30 @@
             opacity: 1;
         }
         
+        @media (min-width: 276px) and (max-width: 576px) {
+            body {
+                padding: 20px;
+                /* less padding for mobile */
+                background-size: cover;
+            }
+            .navbar {
+                width: 100%;
+                border-radius: 0;
+            }
+            .card {
+                margin-bottom: 20px;
+            }
+            #forecast-city {
+                width: auto !important;
+            }
+            #forecast-section {
+                width: auto;
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+        
         @media (max-width: 576px) {
             body {
                 padding: 20px;
